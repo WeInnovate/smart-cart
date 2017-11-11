@@ -32,4 +32,13 @@ public class Customer {
 		this.gender = gender;
 	}
 
+	public Customer(String firstName, String lastName, String gender) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
+	}
+	
+	
+
 }

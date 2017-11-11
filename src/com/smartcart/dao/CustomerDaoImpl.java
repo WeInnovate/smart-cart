@@ -1,14 +1,34 @@
 package com.smartcart.dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import com.smartcart.domain.Customer;
 
 public class CustomerDaoImpl implements CustomerDao {
-
+	Connection con;
 	@Override
 	public String addCustomer(Customer customer) {
-		// TODO Auto-generated method stub
+		try {
+			con = DriverManager.getConnection("", "", "");
+			Statement stmt = con.createStatement();
+			stmt.executeUpdate("INSERT INTO SC_CUSTOMER VALUES('"+customer.getFirstName()+"','"+customer.getLastName()+"')");
+			
+		} catch (Exception e) {
+			
+		}
+		finally {
+			if(con != null){
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		return null;
 	}
 
