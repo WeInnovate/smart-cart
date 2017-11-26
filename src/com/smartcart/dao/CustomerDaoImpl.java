@@ -12,18 +12,22 @@ import com.smartcart.domain.Customer;
 
 public class CustomerDaoImpl implements CustomerDao {
 	Connection con;
+
 	@Override
 	public String addCustomer(Customer customer) {
+		String retVal = null;
 		try {
-			con = DriverManager.getConnection("", "", "");
+			con = DBUtil.getConnection();
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate("INSERT INTO SC_CUSTOMER VALUES('"+customer.getFirstName()+"','"+customer.getLastName()+"')");
-			
+			int i = stmt.executeUpdate("INSERT INTO CUSTOMER VALUES('" + customer.getCustId() + "','"
+					+ customer.getFirstName() + "','" + customer.getLastName() + "','" + customer.getGender() + "')");
+			if (i > 0) {
+				retVal = customer.getCustId();
+			}
 		} catch (Exception e) {
-			
-		}
-		finally {
-			if(con != null){
+			e.printStackTrace();
+		} finally {
+			if (con != null) {
 				try {
 					con.close();
 				} catch (SQLException e) {
@@ -31,41 +35,41 @@ public class CustomerDaoImpl implements CustomerDao {
 				}
 			}
 		}
-		return null;
+		return retVal;
 	}
 
 	@Override
 	public String updateCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		try {
-			con=DBUtil.getConnection();
+			con = DBUtil.getConnection();
 			Statement stmt = con.createStatement();
 			Scanner scan = new Scanner(System.in);
 			String choice = "";
-			
+
 			do {
-			
-			System.out.print("Enter firstname: ");
-			String un = scan.nextLine();
-			
-			System.out.print("Enter lastname: ");
-			String p = scan.nextLine();
-			
-			int i = stmt.executeUpdate("UPDATE  SC_CUSTOMER SET  FIRSTNAME='"+p+"' WHERE LASTNAME='"+un+"'");
-			if (i > 0) {
-				System.out.println("Record is updated successfully.");
-			}
-			
-			System.out.print("Do you want to continue(Y/N): ");
-			choice = scan.nextLine();
-			
-		} while (choice.equalsIgnoreCase("Y"));
-	
+
+				System.out.print("Enter firstname: ");
+				String un = scan.nextLine();
+
+				System.out.print("Enter lastname: ");
+				String p = scan.nextLine();
+
+				int i = stmt
+						.executeUpdate("UPDATE  SC_CUSTOMER SET  FIRSTNAME='" + p + "' WHERE LASTNAME='" + un + "'");
+				if (i > 0) {
+					System.out.println("Record is updated successfully.");
+				}
+
+				System.out.print("Do you want to continue(Y/N): ");
+				choice = scan.nextLine();
+
+			} while (choice.equalsIgnoreCase("Y"));
+
 		} catch (Exception e) {
-			
-		}
-		finally {
-			if(con != null){
+
+		} finally {
+			if (con != null) {
 				try {
 					con.close();
 				} catch (SQLException e) {
@@ -80,32 +84,31 @@ public class CustomerDaoImpl implements CustomerDao {
 	public boolean deleteCustomer(String customerId) {
 		// TODO Auto-generated method stub
 		try {
-		con=DBUtil.getConnection();
-		Statement stmt = con.createStatement();
-			
+			con = DBUtil.getConnection();
+			Statement stmt = con.createStatement();
+
 			Scanner scan = new Scanner(System.in);
 			String choice = "";
-			
+
 			do {
-								
+
 				System.out.print("Enter Customer first name  which u want to delete: ");
 				String p = scan.nextLine();
-				
-				int i = stmt.executeUpdate("DELETE FROMSC_CUSTOMER WHERE FIRSTNAME='"+p+"'");
+
+				int i = stmt.executeUpdate("DELETE FROMSC_CUSTOMER WHERE FIRSTNAME='" + p + "'");
 				if (i > 0) {
 					System.out.println("Record is deleted successfully.");
 				}
-				
+
 				System.out.print("Do you want to continue(Y/N): ");
 				choice = scan.nextLine();
-				
+
 			} while (choice.equalsIgnoreCase("Y"));
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
-			if(con != null){
+		} finally {
+			if (con != null) {
 				try {
 					con.close();
 				} catch (SQLException e) {

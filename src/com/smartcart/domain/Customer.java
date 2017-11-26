@@ -2,6 +2,8 @@ package com.smartcart.domain;
 
 public class Customer {
 	
+	private String custId;
+	
 	private String firstName;
 	
 	private String lastName;
@@ -32,13 +34,20 @@ public class Customer {
 		this.gender = gender;
 	}
 
-	public Customer(String firstName, String lastName, String gender) {
+	public String getCustId() {
+		return custId;
+	}
+
+	public void setCustId(String custId) {
+		this.custId = custId;
+	}
+
+	public Customer(String custId, String firstName, String lastName, String gender) {
 		super();
+		this.custId = custId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
 	}
 	
-	
-
 }
