@@ -13,7 +13,7 @@ public class DBUtil {
 	public static Connection getConnection() throws SQLException{
 		
 		if(con == null || con.isClosed()){
-			con = DriverManager.getConnection("jdbc:h2:~/SMART_CART", "sa", "sa");
+			con = DriverManager.getConnection("jdbc:h2:~/smart-cart", "sa", "");
 		}
 		
 		return con;

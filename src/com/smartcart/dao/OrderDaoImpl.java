@@ -17,10 +17,9 @@ public class OrderDaoImpl implements OrderDao {
 		// TODO Auto-generated method stub
 		try {
 			con = DBUtil.getConnection();
-			Statement stmt;
-			stmt = con.createStatement();
-			stmt.executeUpdate(
-					"INSERT INTO SC_ORDER VALUES('" + order.getOrderId() + "','" + order.getOrderDesc() + "')");
+			Statement stmt = con.createStatement();
+			int i=stmt.executeUpdate(
+					"INSERT INTO ORD VALUES('" + order.getOrderId() + "','" + order.getOrderDesc() + "','" + order.getBillAmount() + "')");
 			return null;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

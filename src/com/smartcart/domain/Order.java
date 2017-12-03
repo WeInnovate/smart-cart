@@ -53,6 +53,13 @@ public class Order {
 	public void setShippingAddress(Address shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
+
+	public Order(String orderId, String orderDesc, double billAmount) {
+		super();
+		this.orderId = orderId;
+		this.orderDesc = orderDesc;
+		this.billAmount = billAmount;
+	}
 	
 	
 
