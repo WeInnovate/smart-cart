@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Welcome !!!</title>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 
+<h1>Welcome to SmartCart</h1>
+<p>Buy anything....</p>
+
+
+<jsp:include page="footer.jsp" />
 </body>
 </html>

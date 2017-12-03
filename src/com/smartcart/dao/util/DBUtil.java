@@ -13,6 +13,11 @@ public class DBUtil {
 	public static Connection getConnection() throws SQLException{
 		
 		if(con == null || con.isClosed()){
+			try {
+				Class.forName("org.h2.Driver");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
 			con = DriverManager.getConnection("jdbc:h2:~/smart-cart", "sa", "");
 		}
 		

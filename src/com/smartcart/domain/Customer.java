@@ -2,13 +2,21 @@ package com.smartcart.domain;
 
 public class Customer {
 	
-	private String custId;
+	private String email;
 	
 	private String firstName;
 	
 	private String lastName;
 	
 	private String gender;
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -34,20 +42,22 @@ public class Customer {
 		this.gender = gender;
 	}
 
-	public String getCustId() {
-		return custId;
-	}
-
-	public void setCustId(String custId) {
-		this.custId = custId;
-	}
-
-	public Customer(String custId, String firstName, String lastName, String gender) {
+	public Customer() {
 		super();
-		this.custId = custId;
+		// TODO Auto-generated constructor stub
+	}
+
+	public Customer(String email, String firstName, String lastName, String gender) {
+		super();
+		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Customer [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
+				+ "]";
+	}
 }

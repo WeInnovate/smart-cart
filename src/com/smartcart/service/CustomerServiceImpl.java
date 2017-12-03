@@ -2,14 +2,16 @@ package com.smartcart.service;
 
 import java.util.List;
 
+import com.smartcart.dao.CustomerDao;
+import com.smartcart.dao.CustomerDaoImpl;
 import com.smartcart.domain.Customer;
 
 public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public String addCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+		CustomerDao customerDao = new CustomerDaoImpl();
+		return customerDao.addCustomer(customer);
 	}
 
 	@Override

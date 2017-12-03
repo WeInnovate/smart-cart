@@ -19,10 +19,10 @@ public class CustomerDaoImpl implements CustomerDao {
 		try {
 			con = DBUtil.getConnection();
 			Statement stmt = con.createStatement();
-			int i = stmt.executeUpdate("INSERT INTO CUSTOMER VALUES('" + customer.getCustId() + "','"
+			int i = stmt.executeUpdate("INSERT INTO CUSTOMER VALUES('" + customer.getEmail() + "','"
 					+ customer.getFirstName() + "','" + customer.getLastName() + "','" + customer.getGender() + "')");
 			if (i > 0) {
-				retVal = customer.getCustId();
+				retVal = customer.getEmail();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
