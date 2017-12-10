@@ -5,6 +5,7 @@ import com.smartcart.domain.Order;
 
 public class TestDao {
 	public static void main(String[] args) {
+		
 		// customer
 		Customer customer = new Customer("atul.wnw@gmail.com", "Atul", "Dwivedi", "Male");
 		CustomerDaoImpl customerDaoImpl = new CustomerDaoImpl();
