@@ -11,7 +11,7 @@ import com.smartcart.domain.Address;
 public class AddressDaoImpl implements AddressDao {
 
 	@Override
-	public String addAddress(Address address) {
+	public int addAddress(Address address) {
 		// TODO Auto-generated method stub
 		Connection con;
 		try {
@@ -22,29 +22,29 @@ public class AddressDaoImpl implements AddressDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return 0;
 	}
 
 	@Override
-	public String updateAddress(Address address) {
+	public int updateAddress(Address address) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteAddress(long addressId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Address getAddressByID(long addressId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean deleteAddress(String addressId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Address getAddress(String addressId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Address> getAddresss() {
+	public List<Address> getAddress() {
 		// TODO Auto-generated method stub
 		return null;
 	}

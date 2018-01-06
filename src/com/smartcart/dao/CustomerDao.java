@@ -6,13 +6,13 @@ import com.smartcart.domain.Customer;
 
 public interface CustomerDao {
 
-	public String addCustomer(Customer customer);
+	public int addCustomer(Customer customer);
 
-	public String updateCustomer(Customer customer);
+	public int updateCustomer(Customer customer);
 
-	public boolean deleteCustomer(String customerId);
+	public int deleteCustomer(String customerId);
 
-	public Customer getCustomer(String customerId);
+	public Customer getCustomerbyID(String customerId);
 
 	public List<Customer> getCustomers();
 }

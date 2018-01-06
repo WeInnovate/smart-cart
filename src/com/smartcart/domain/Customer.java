@@ -9,6 +9,16 @@ public class Customer {
 	private String lastName;
 	
 	private String gender;
+	
+	private String mobile;
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 
 	public String getEmail() {
 		return email;
@@ -42,10 +52,17 @@ public class Customer {
 		this.gender = gender;
 	}
 
-	public Customer() {
+	@Override
+	public String toString() {
+		return "Customer [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
+				+ ", mobile=" + mobile + "]";
+	}
+
+/*	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	public Customer(String email, String firstName, String lastName, String gender) {
 		super();
@@ -54,10 +71,8 @@ public class Customer {
 		this.lastName = lastName;
 		this.gender = gender;
 	}
+	*/
 
-	@Override
-	public String toString() {
-		return "Customer [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
-				+ "]";
+	
 	}
-}
+
