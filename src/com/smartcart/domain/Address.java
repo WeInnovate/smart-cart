@@ -2,11 +2,11 @@ package com.smartcart.domain;
 
 public class Address {
 
-	private String addressType;
+	private long addressID;
 
-	private String street1;
+	private String Line1;
 
-	private String street2;
+	private String Line2;
 
 	private String city;
 
@@ -15,6 +15,38 @@ public class Address {
 	private String pin;
 
 	private String country;
+	
+	private String addressType;
+	
+	private boolean isDefault;
+	
+	
+
+	public long getAddressID() {
+		return addressID;
+	}
+
+	public void setAddressID(long addressID) {
+		this.addressID = addressID;
+	}
+
+	
+	public String getLine1() {
+		return Line1;
+	}
+
+	public void setLine1(String Line1) {
+		this.Line1 = Line1;
+	}
+
+	
+	public String getLine2() {
+		return Line2;
+	}
+
+	public void setLine2(String line2) {
+		Line2 = line2;
+	}
 
 	public String getAddressType() {
 		return addressType;
@@ -24,20 +56,12 @@ public class Address {
 		this.addressType = addressType;
 	}
 
-	public String getStreet1() {
-		return street1;
+	public boolean isDefault() {
+		return isDefault;
 	}
 
-	public void setStreet1(String street1) {
-		this.street1 = street1;
-	}
-
-	public String getStreet2() {
-		return street2;
-	}
-
-	public void setStreet2(String street2) {
-		this.street2 = street2;
+	public void setDefault(boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 	public String getCity() {
@@ -70,5 +94,12 @@ public class Address {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [addressID=" + addressID + ", Line1=" + Line1 + ", Line2=" + Line2 + ", city=" + city
+				+ ", state=" + state + ", pin=" + pin + ", country=" + country + ", addressType=" + addressType
+				+ ", isDefault=" + isDefault + "]";
 	}
 }

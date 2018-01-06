@@ -6,13 +6,13 @@ import com.smartcart.domain.Address;
 
 public interface AddressDao {
 
-	public String addAddress(Address address);
+	int addAddress(Address address);
 
-	public String updateAddress(Address address);
+	int updateAddress(Address address);
 
-	public boolean deleteAddress(String addressId);
+	int deleteAddress(long addressId);
 
-	public Address getAddress(String addressId);
+	Address getAddressByID(long addressId);
 
-	public List<Address> getAddresss();
+	List<Address> getAddress();
 }
