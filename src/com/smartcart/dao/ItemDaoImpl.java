@@ -1,8 +1,10 @@
 package com.smartcart.dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -131,8 +133,41 @@ public class ItemDaoImpl implements ItemDao {
 
 	@Override
 	public List<Item> getItems() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Item> items = new ArrayList<>();
+		
+		
+		
+		try {
+			con = DBUtil.getConnection();
+			Statement stmt = con.createStatement();
+			
+			ResultSet rs = stmt.executeQuery("SELECT * FROM ITEM");
+			while(rs.next()) {
+				
+				Item item = new Item();
+				item.setItemId(rs.getString(1));
+				item.setItemName(rs.getString(2));
+				
+				items.add(item);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+try {
+	con.close();
+} catch (SQLException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+		}
+		
+		
+		
+		
+		
+		return items;
 	}
 
 }

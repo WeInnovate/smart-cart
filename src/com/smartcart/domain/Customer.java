@@ -1,10 +1,20 @@
 package com.smartcart.domain;
 
 public class Customer {
-	
+		
 	private String email;
 	
-	private String firstName;
+	private String pswd;
+	
+	public String getPswd() {
+		return pswd;
+	}
+
+	public void setPswd(String pswd) {
+		this.pswd = pswd;
+	}
+
+	private String usname;
 	
 	private String lastName;
 	
@@ -28,13 +38,7 @@ public class Customer {
 		this.email = email;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+	
 
 	public String getLastName() {
 		return lastName;
@@ -52,11 +56,23 @@ public class Customer {
 		this.gender = gender;
 	}
 
+	public String getUsname() {
+		return usname;
+	}
+
+	public void setUsname(String usname) {
+		this.usname = usname;
+	}
+
 	@Override
 	public String toString() {
-		return "Customer [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
-				+ ", mobile=" + mobile + "]";
+		return "Customer [email=" + email + ", pswd=" + pswd + ", usname=" + usname + ", lastName=" + lastName
+				+ ", gender=" + gender + ", mobile=" + mobile + "]";
 	}
+
+	
+
+
 
 /*	public Customer() {
 		super();
