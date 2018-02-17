@@ -2,7 +2,7 @@ package com.smartcart.domain;
 
 public class Address {
 
-	private long addressID;
+	private String addressID;
 
 	private String Line1;
 
@@ -22,12 +22,12 @@ public class Address {
 	
 	
 
-	public long getAddressID() {
+	public String getAddressID() {
 		return addressID;
 	}
 
-	public void setAddressID(long addressID) {
-		this.addressID = addressID;
+	public void setAddressID(String AddressID) {
+		this.addressID = AddressID;
 	}
 
 	
@@ -102,4 +102,6 @@ public class Address {
 				+ ", state=" + state + ", pin=" + pin + ", country=" + country + ", addressType=" + addressType
 				+ ", isDefault=" + isDefault + "]";
 	}
+
+	
 }

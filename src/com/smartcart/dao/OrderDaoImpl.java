@@ -1,116 +1,79 @@
 package com.smartcart.dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import com.smartcart.dao.util.DBUtil;
+import com.smartcart.domain.Address;
+import com.smartcart.domain.Customer;
+import com.smartcart.domain.Item;
 import com.smartcart.domain.Order;
 
 public class OrderDaoImpl implements OrderDao {
-	Connection con;
-
+static Scanner scan;
 	@Override
 	public String addOrder(Order order) {
-		// TODO Auto-generated method stub
 		try {
-			con = DBUtil.getConnection();
-			Statement stmt = con.createStatement();
-			int i=stmt.executeUpdate(
-					"INSERT INTO ORD VALUES('" + order.getOrderId() + "','" + order.getOrderDesc() + "','" + order.getBillAmount() + "')");
-			return null;
+			Connection con=DBUtil.getConnection();
+			Statement stmt= con.createStatement();
+		int i =	stmt.executeUpdate("INSERT INTO ORDER  VALUES(' "+ order.getOrderId()+"','"+order.getOrderDesc()+"','"+order.getBillAmount()+"','"+order.getShippingAddress()+"')");
+		if(i!=0) 
+		{
+			System.out.println("Records inserted");
+		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
+		
 		return null;
 	}
 
 	@Override
 	public String updateOrder(Order order) {
+		// TODO Auto-generated method stub
+		System.out.println("enter ur orderId");
+		String oid = scan.nextLine();
+		System.out.println("enter the field u want to update");
+		String field = scan.nextLine();
+		System.out.println("Enter the new value");
+		String nv = scan.nextLine();
+		Connection con;
 		try {
 			con = DBUtil.getConnection();
+
 			Statement stmt = con.createStatement();
-			Scanner scan = new Scanner(System.in);
-			String choice = "";
-
-			do {
-
-				System.out.print("Enter orderid: ");
-				String un = scan.nextLine();
-
-				System.out.print("Enter orderdesc: ");
-				String p = scan.nextLine();
-
-				int i = stmt.executeUpdate("UPDATE  SC_ORDER SET  ORDERID='" + p + "' WHERE ORDERDESC='" + un + "'");
-				if (i > 0) {
-					System.out.println("Record is updated successfully.");
-				}
-
-				System.out.print("Do you want to continue(Y/N): ");
-				choice = scan.nextLine();
-
-			} while (choice.equalsIgnoreCase("Y"));
-
-		} catch (Exception e) {
-
-		} finally {
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			int i = stmt
+					.executeUpdate("UPDATE ORDER SET ' " + field + "'=' " + nv + "' WHERE ORDERID=' " + oid + "'");
+		return null;
+	}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
+		
 		return null;
 	}
 
+
 	@Override
 	public boolean deleteOrder(String orderId) {
+		// TODO Auto-generated method stub
 		try {
-			con = DBUtil.getConnection();
+			Connection con = DBUtil.getConnection();
 			Statement stmt = con.createStatement();
+			System.out.println("enter ur order ID");
+			String oid = scan.nextLine();
 
-			Scanner scan = new Scanner(System.in);
-			String choice = "";
-
-			do {
-
-				System.out.print("Enter order id  which u want to delete: ");
-				String p = scan.nextLine();
-
-				int i = stmt.executeUpdate("DELETE FROM SC_ORDER WHERE ORDERID='" + p + "'");
-				if (i > 0) {
-					System.out.println("Record is deleted successfully.");
-				}
-
-				System.out.print("Do you want to continue(Y/N): ");
-				choice = scan.nextLine();
-
-			} while (choice.equalsIgnoreCase("Y"));
-
+			int i = stmt.executeUpdate("DELETE FROM ORDER WHERE ORDERID= ' " + oid + "' ");
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 
 		return false;
@@ -119,13 +82,59 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public Order getOrder(String orderId) {
 		// TODO Auto-generated method stub
-		return null;
+Order order=new Order();
+		
+		try {
+			Connection con=DBUtil.getConnection();
+			Statement stmt= con.createStatement();
+			ResultSet rs= stmt.executeQuery("SELECT ORDERDESC,BILLAMOUNT,SHIPPINGADDRESS WHERE USERID= '"+orderId+"'");
+			
+			rs.next();
+			
+			String orderdesc=rs.getString(2);
+			double bill=rs.getDouble(3);
+			String address=rs.getString(4);
+			
+				
+			order.setOrderDesc(orderdesc);
+			order.setBillAmount(bill);
+			order.setShippingAddress(address);
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return order;
 	}
+
+	
+	
 
 	@Override
 	public List<Order> getOrders() {
 		// TODO Auto-generated method stub
+		List<Order> orders= new ArrayList();
+		try {
+			 Connection con = DBUtil.getConnection();
+			Statement stmt = con.createStatement();
+			
+			ResultSet rs = stmt.executeQuery("SELECT * FROM ORDER");
+			while(rs.next()) {
+				
+				Order order = new Order();
+				order.setOrderId(rs.getString(1));
+				order.setOrderDesc(rs.getString(2));
+								
+				orders.add(order);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
-}
+	

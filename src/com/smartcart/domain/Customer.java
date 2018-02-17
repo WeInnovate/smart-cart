@@ -4,15 +4,9 @@ public class Customer {
 		
 	private String email;
 	
-	private String pswd;
 	
-	public String getPswd() {
-		return pswd;
-	}
-
-	public void setPswd(String pswd) {
-		this.pswd = pswd;
-	}
+	
+	
 
 	private String usname;
 	
@@ -20,13 +14,13 @@ public class Customer {
 	
 	private String gender;
 	
-	private String mobile;
+	private double mobile;
 
-	public String getMobile() {
+	public double getMobile() {
 		return mobile;
 	}
 
-	public void setMobile(String mobile) {
+	public void setMobile(double mobile) {
 		this.mobile = mobile;
 	}
 
@@ -66,7 +60,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [email=" + email + ", pswd=" + pswd + ", usname=" + usname + ", lastName=" + lastName
+		return "Customer [email=" + email + ", usname=" + usname + ", lastName=" + lastName
 				+ ", gender=" + gender + ", mobile=" + mobile + "]";
 	}
 
