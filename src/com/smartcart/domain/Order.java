@@ -50,16 +50,19 @@ public class Order {
 		return shippingAddress;
 	}
 
-	public void setShippingAddress(Address shippingAddress) {
-		this.shippingAddress = shippingAddress;
+	public void setShippingAddress(String address) {
+		this.shippingAddress = address;
 	}
 
-	public Order(String orderId, String orderDesc, double billAmount) {
-		super();
-		this.orderId = orderId;
-		this.orderDesc = orderDesc;
-		this.billAmount = billAmount;
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", orderDesc=" + orderDesc + ", items=" + items + ", billAmount="
+				+ billAmount + ", shippingAddress=" + shippingAddress + "]";
 	}
+
+
+
+	
 	
 	
 

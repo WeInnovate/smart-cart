@@ -96,8 +96,8 @@ public class AddressDaoImpl implements AddressDao {
 		try {
 			 Connection con = DBUtil.getConnection();
 			Statement stmt = con.createStatement();
+			ResultSet rs= stmt.executeQuery("SELECT * FROM ADDRESS");
 			
-			ResultSet rs = stmt.executeQuery("SELECT * FROM ADDRESS");
 			while(rs.next()) {
 				
 				Address address=new Address();
