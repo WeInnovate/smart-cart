@@ -2,53 +2,58 @@ package com.smartcart.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.smartcart.dao.CustomerDao;
+import com.smartcart.dao.CustomerDaoImpl;
 import com.smartcart.domain.Customer;
-import com.smartcart.service.CustomerService;
-import com.smartcart.service.CustomerServiceImpl;
 
 /**
- * Servlet implementation class CustomerServlet
+ * Servlet implementation class Customerservlet
  */
-@WebServlet("/customer/*")
-public class CustomerServlet extends HttpServlet {
+@WebServlet("/Customerservlet")
+public class Customerservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Customerservlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	public CustomerServlet() {
-		super();
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+		String usname= request.getParameter("firstname");
+		String lastname=request.getParameter("lastname");
+		String gender=request.getParameter("gender");
+		String mobile=request.getParameter("number");
+		String email=request.getParameter("email");
+		CustomerDaoImpl customer= new CustomerDaoImpl();
+		customer.addCustomer(customer);
+		RequestDispatcher rd= request.getRequestDispatcher("login.jsp");
+		rd.forward(request, response);
+			
 		
-		String requestUri = request.getRequestURI();
 		
-		if(requestUri.contains("add")){
-			Customer customer = (Customer) request.getAttribute("cust");
-			CustomerService customerService = new CustomerServiceImpl();
-			customerService.addCustomer(customer);
-			
-			HttpSession session = request.getSession(true);
-			session.setAttribute("cust", customer);
-			
-			response.sendRedirect("customer-profile.jsp");
-		}
-		else if(requestUri.contains("update")){
-			
-		}
-		else if(requestUri.contains("delete")){
-			
-		}
 	}
+
 }

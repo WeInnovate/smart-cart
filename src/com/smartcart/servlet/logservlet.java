@@ -38,7 +38,7 @@ public class logservlet extends HttpServlet {
 		doGet(request, response);
 		String Username= request.getParameter("un");
 		String Password=request.getParameter("ps");
-		if(new LoginDaoImpl().checkLogin(Username,Password)
+		if(new LoginDaoImpl().checkLogin(Username,Password))
 				{
 			RequestDispatcher rd= request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);

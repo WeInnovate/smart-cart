@@ -30,7 +30,10 @@
 				<td>Male: <input type="radio" name="gender" value="Male" />&nbsp;Female:
 					<input type="radio" name="gender" value="Female" /></td>
 			</tr>
-
+			<tr>
+			<td>Mobile</td>
+			<td><input type="text" name="number"/></td>
+			</tr>
 			<tr>
 				<td><input type="reset" value="Reset" /></td>
 				<td><input type="submit" value="Submit" /></td>
