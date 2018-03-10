@@ -7,16 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action= customerinfoservlet method="get">
-<h1>Know your profile!!</h1>
+<form action= AddressInfoServlet method="get">
+<h1>Know your Location!!</h1>
 <table>
 <tr>
-<td>Enter your login ID</td>
-<td><input type = "email" name="email" placeholder="Enter your login ID"/>
+<td>Enter your pincode</td>
+<td><input type = "text" name="pin" placeholder="Enter your pincode"/>
 </td>
 </tr>
 <tr>
-<td><input type= submit value="Get My Details !"/></td>
+<td><input type= submit value="Get My Address !"/></td>
 </tr>
 </table>
 </form>
