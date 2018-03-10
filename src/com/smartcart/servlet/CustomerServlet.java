@@ -16,7 +16,7 @@ import com.smartcart.domain.Customer;
 /**
  * Servlet implementation class Customerservlet
  */
-@WebServlet("/Customerservlet")
+@WebServlet("/customer/add")
 public class Customerservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,14 +41,20 @@ public class Customerservlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		/*doGet(request, response);
 		String usname= request.getParameter("firstname");
 		String lastname=request.getParameter("lastname");
 		String gender=request.getParameter("gender");
 		String mobile=request.getParameter("number");
 		String email=request.getParameter("email");
-		CustomerDaoImpl customer= new CustomerDaoImpl();
-		customer.addCustomer(customer);
+		
+		Customer customer = new Customer();
+		customer.setUsname(usname);
+		*/
+		Customer customer  = (Customer)request.getAttribute("cust");
+		
+		CustomerDaoImpl customerDaoImpl= new CustomerDaoImpl();
+		customerDaoImpl.addCustomer(customer);
 		RequestDispatcher rd= request.getRequestDispatcher("login.jsp");
 		rd.forward(request, response);
 			

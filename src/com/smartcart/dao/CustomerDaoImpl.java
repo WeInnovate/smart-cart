@@ -24,7 +24,6 @@ public class CustomerDaoImpl implements CustomerDao {
 			if (i!=0)
 				System.out.println("Record inserted");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return 0;
