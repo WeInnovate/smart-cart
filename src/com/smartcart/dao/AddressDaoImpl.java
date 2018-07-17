@@ -20,10 +20,13 @@ public class AddressDaoImpl implements AddressDao {
 		// TODO Auto-generated method stub
 		Connection con;
 		try {
-			con=DBUtil.getConnection();
-			Statement stmt=con.createStatement();
-			int i =	stmt.executeUpdate("INSERT INTO ADDRESS VALUES(' "+address.getAddressID()+"','"+address.getLine1()+"','"+address.getLine2()+"','"+address.getCity()+"','"+address.getState()+"','"+address.getPin()+"',' "+address.getCountry()+"','"+address.getAddressType()+"')");
-				
+			con = DBUtil.getConnection();
+			Statement stmt = con.createStatement();
+			int i = stmt.executeUpdate("INSERT INTO ADDRESS VALUES(' " + address.getAddressID() + "','"
+					+ address.getLine1() + "','" + address.getLine2() + "','" + address.getCity() + "','"
+					+ address.getState() + "','" + address.getPin() + "',' " + address.getCountry() + "','"
+					+ address.getAddressType() + "')");
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,34 +37,33 @@ public class AddressDaoImpl implements AddressDao {
 	@Override
 	public int updateAddress(Address address) {
 		// TODO Auto-generated method stub
-		
-		try{
+
+		try {
 			String ch;
 			do {
-		System.out.println("enter ur firstname");
-		String fn = scan.nextLine();
-		System.out.println("enter the field u want to update");
-		String field = scan.nextLine();
-		System.out.println("Enter the new value");
-		String nv = scan.nextLine();
-		Connection con;
-		
-			con = DBUtil.getConnection();
+				System.out.println("enter ur firstname");
+				String fn = scan.nextLine();
+				System.out.println("enter the field u want to update");
+				String field = scan.nextLine();
+				System.out.println("Enter the new value");
+				String nv = scan.nextLine();
+				Connection con;
 
-			Statement stmt = con.createStatement();
-			int i = stmt
-					.executeUpdate("UPDATE CUSTOMER SET ' " + field + "'=' " + nv + "' WHERE FIRSTNAME=' " + fn + "'");
-			
-		System.out.println("do you wish to update any other field? (Y/N");
-		 ch= scan.nextLine();
-		}
-		
-		while(ch.equalsIgnoreCase("Y"));		
-		}
-		catch (SQLException e) {
+				con = DBUtil.getConnection();
+
+				Statement stmt = con.createStatement();
+				int i = stmt.executeUpdate(
+						"UPDATE CUSTOMER SET ' " + field + "'=' " + nv + "' WHERE FIRSTNAME=' " + fn + "'");
+
+				System.out.println("do you wish to update any other field? (Y/N");
+				ch = scan.nextLine();
+			}
+
+			while (ch.equalsIgnoreCase("Y"));
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-				}
+		}
 		return 0;
 	}
 
@@ -92,22 +94,21 @@ public class AddressDaoImpl implements AddressDao {
 	@Override
 	public List<Address> getAddress() {
 		// TODO Auto-generated method stub
-		List<Address> addresses= new ArrayList();
+		List<Address> addresses = new ArrayList();
 		try {
-			 Connection con = DBUtil.getConnection();
+			Connection con = DBUtil.getConnection();
 			Statement stmt = con.createStatement();
-			ResultSet rs= stmt.executeQuery("SELECT * FROM ADDRESS");
-			
-			while(rs.next()) {
-				
-				Address address=new Address();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM ADDRESS");
+
+			while (rs.next()) {
+
+				Address address = new Address();
 				address.setAddressID(rs.getString(1));
 				address.setPin(rs.getString(6));
-								
+
 				addresses.add(address);
 			}
-			
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

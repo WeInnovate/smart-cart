@@ -50,8 +50,8 @@ public class Order {
 		return shippingAddress;
 	}
 
-	public void setShippingAddress(String address) {
-		this.shippingAddress = address;
+	public void setShippingAddress(Address shippingAddress) {
+		this.shippingAddress = shippingAddress;
 	}
 
 	@Override
@@ -59,11 +59,5 @@ public class Order {
 		return "Order [orderId=" + orderId + ", orderDesc=" + orderDesc + ", items=" + items + ", billAmount="
 				+ billAmount + ", shippingAddress=" + shippingAddress + "]";
 	}
-
-
-
-	
-	
-	
 
 }
